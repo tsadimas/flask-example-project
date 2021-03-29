@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block main %}
+<table>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>City</th>
+               <th>Country</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for student in students %}
+               <tr>
+                  <td>{{ student.name }}</td>
+                  <td>{{ student.city }}</td>
+                  <td>{{ student.country }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+{% endblock %}
