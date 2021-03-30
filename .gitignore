@@ -4,3 +4,4 @@ fvenv/
 
 __pycache__/
 
+*.env

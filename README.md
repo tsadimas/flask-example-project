@@ -22,3 +22,13 @@ or
 ```bash
 gunicorn app.main:app  --bind 0.0.0.0:5000
 ```
+
+## env variables
+* copy .env.example
+```bash
+cp .env.example .env
+```
+define the variables
+```bash
+SQLALCHEMY_DATABASE_URI
+```
