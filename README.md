@@ -22,7 +22,13 @@ or
 ```bash
 gunicorn app.main:app  --bind 0.0.0.0:5000
 ```
+## Database env variables (sqlite, postgres, mysql)
+```bash
+SQLALCHEMY_DATABASE_URI=sqlite:///./students.sqlite3
+SQLALCHEMY_DATABASE_URI=postgresql://demouser:pass123@192.168.135.121/demodb
+SQLALCHEMY_DATABASE_URI: mysql://demo:demo@db01/demo
 
+```
 ## env variables
 * copy .env.example
 ```bash
