@@ -38,3 +38,12 @@ define the variables
 ```bash
 SQLALCHEMY_DATABASE_URI
 ```
+
+# Docker
+```bash
+docker build -t myflask .
+```
+run
+```bash
+docker run --env-file .env -p 5000:5000 myflask
+```
