@@ -47,3 +47,9 @@ run
 ```bash
 docker run --env-file .env -p 5000:5000 myflask
 ```
+
+
+# install packages for mysql
+``bash
+sudo apt install libmysqlclient-dev
+```
