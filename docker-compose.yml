@@ -2,7 +2,7 @@ version: "3"
 
 services:
   db:
-    image: postgres:11
+    image: postgres:14
     ports:
       - "5432:5432"
     environment:
@@ -11,17 +11,25 @@ services:
       - POSTGRES_DB=test_db
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U postgres
+      interval: 30s
+      timeout: 30s
+      retries: 3
   web:
     build:
       context: .
-      dockerfile: Dockerfile
-    command: bash -c "wait-for-it db:5432 -- gunicorn main:app --bind 0.0.0.0:5000"
+      dockerfile: flask.Dockerfile
+    command: gunicorn main:app --bind 0.0.0.0:5000
     env_file:
       - ./.env
     ports:
       - "5000:5000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
 volumes:
   postgres_data:
