@@ -30,7 +30,8 @@ class students(db.Model):
     self.city = city
     self.country = country
 
-db.create_all()
+with app.app_context():
+  db.create_all()
 
 @app.route('/')
 def show_all():
