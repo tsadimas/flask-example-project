@@ -22,8 +22,7 @@ class students(db.Model):
   id = db.Column('student_id', db.Integer, primary_key = True)
   name = db.Column(db.String(100))
   city = db.Column(db.String(50))
-  country = db.Column(db.String(200)) 
- 
+  country = db.Column(db.String(200))
 
   def __init__(self, name, city, country):
     self.name = name

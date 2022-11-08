@@ -1,4 +1,4 @@
-FROM python:3.6.15-slim-bullseye
+FROM python:3.10-slim-bullseye
 
 # Set environment varibles
 ENV PYTHONDONTWRITEBYTECODE 1
