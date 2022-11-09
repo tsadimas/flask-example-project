@@ -4,6 +4,11 @@
 ```bash
 git clone 
 ```
+
+# in order to install mysqlclient dependency, install the corresponding libpython-dev, e,g,
+```bash
+sudo apt install libpython3.10-dev
+```
 * create virtual environment, activate and install requirements
 ```bash
 python3 -m venv fvenv
