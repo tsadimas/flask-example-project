@@ -6,6 +6,7 @@
                <th>Name</th>
                <th>City</th>
                <th>Country</th>
+               <th>Actions</th>
             </tr>
          </thead>
          
@@ -14,7 +15,8 @@
                <tr>
                   <td>{{ student.name }}</td>
                   <td>{{ student.city }}</td>
-                  <td>{{ student.country }}</td>
+                  <td>{{ student.country }}{{ student.id }} </td>
+                  <td><a href = "{{ url_for('savejob', stid=student.id) }}">Add Job</a></td>
                </tr>
             {% endfor %}
          </tbody>
