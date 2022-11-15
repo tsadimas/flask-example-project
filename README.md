@@ -55,6 +55,10 @@ docker run --env-file .env -p 5000:5000 myflask
 
 
 # install packages for mysql
-``bash
+```bash
 sudo apt install libmysqlclient-dev
 ```
+
+
+Links
+* [bootstrap-flask](https://github.com/helloflask/bootstrap-flask)

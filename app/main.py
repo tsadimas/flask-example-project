@@ -2,7 +2,8 @@ from flask import Flask, request, flash, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 import os
 from dotenv import load_dotenv
-
+from forms import StudentForm, JobForm
+from flask_bootstrap import Bootstrap5
 # load dotenv in the base root
 APP_ROOT = os.path.join(os.path.dirname(__file__), '..')   # refers to application_top
 dotenv_path = os.path.join(APP_ROOT, '.env')
@@ -10,6 +11,7 @@ load_dotenv(dotenv_path)
 
 
 app = Flask(__name__)
+bootstrap = Bootstrap5(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI")
 app.config['SECRET_KEY'] = os.getenv("SQLALCHEMY_TRACK_MODIFICATIONS")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.getenv("SECRET_KEY")
@@ -53,34 +55,33 @@ def show_all():
 
 @app.route('/student', methods = ['GET', 'POST'])
 def newstudent():
+  form = StudentForm()
   if request.method == 'POST':
-    if not request.form['name'] or not request.form['city'] or not request.form['country']:
-      flash('Please enter all the fields', 'error')
-    else:
+    if form.validate_on_submit():
       student = Student(request.form['name'], request.form['city'], request.form['country'])
       db.session.add(student)
       db.session.commit()
       flash('Record was successfully added')
       return redirect(url_for('show_all'))
-  return render_template('new_student.html')
+  return render_template('new_student.html', form=form)
 
 
 @app.route('/job/<stid>', methods = ['POST'])
 def savejob(stid):
-  if not request.form['name']:
-    flash('Please enter all the fields', 'error')
-  else:
+  form = JobForm()
+  if form.validate_on_submit():
     job = Job(request.form['name'], stid)
     db.session.add(job)
     db.session.commit()
     flash('Record was successfully added')
-    return redirect(url_for('show_all'))
+  return redirect(url_for('show_all'))
 
 
 @app.route('/job/<stid>', methods=['GET'])
 def createjob(stid):
+  form = JobForm()
   student = db.session.get(Student, stid)
-  return render_template('new_job.html', student=student)
+  return render_template('new_job.html', student=student, form=form)
 
 
 if __name__ == '__main__':
