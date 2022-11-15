@@ -74,7 +74,7 @@ def savejob(stid):
     db.session.add(job)
     db.session.commit()
     flash('Record was successfully added')
-    return redirect(url_for('show_all'))
+  return redirect(url_for('show_all'))
 
 
 @app.route('/job/<stid>', methods=['GET'])
