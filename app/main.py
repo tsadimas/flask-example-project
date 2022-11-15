@@ -2,7 +2,7 @@ from flask import Flask, request, flash, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 import os
 from dotenv import load_dotenv
-from forms import StudentForm, JobForm
+from .forms import StudentForm, JobForm
 from flask_bootstrap import Bootstrap5
 # load dotenv in the base root
 APP_ROOT = os.path.join(os.path.dirname(__file__), '..')   # refers to application_top

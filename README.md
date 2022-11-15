@@ -62,3 +62,4 @@ sudo apt install libmysqlclient-dev
 
 Links
 * [bootstrap-flask](https://github.com/helloflask/bootstrap-flask)
+* [flask-wtf](https://flask-wtf.readthedocs.io/en/1.0.x/)
